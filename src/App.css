@@ -2,13 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #05011b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,4 +11,39 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.inputNameContainer{
+  display:flex;
+  flex-flow: column ;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputNameHeaderText{
+  color:rgb(255, 255, 255);
+  font-size: 45px;
+  margin: 15px;
+}
+
+.inputName {
+  display: flex;
+  flex-flow: column wrap;
+  height: 80vh;
+  width: 70vw;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./images/sketchboard.png");
+  background-size: 100% 100%;
+}
+
+.inputNameText{
+  color:white;
+  font-size: 10% 10%;
+  padding: 2%
+}
+
+.mb-2{
+  width:30vw;
 }
