@@ -27,9 +27,9 @@ class App extends React.Component {
       userName: "",
       userPoints: 0,
       userInventory: [],
-      charmander: 0,
-      bulbasaur: 0,
-      squirtle: 0,
+      item1: 0,
+      item2: 0,
+      item3: 0,
     }
   }
 
@@ -77,7 +77,7 @@ class App extends React.Component {
       this.setState({
         currState: "choose category"
       })
-      localStorage.setItem("user", JSON.stringify({ name: this.state.userName, points: this.state.userPoints, charmander: this.state.charmander, bulbasaur: this.state.bulbasaur, squirtle: this.state.squirtle }))
+      localStorage.setItem("user", JSON.stringify({ name: this.state.userName, points: this.state.userPoints, item1: this.state.item1, item2: this.state.item2, item3: this.state.item3 }))
       let userDetails = (JSON.parse(localStorage.getItem("user")))
       console.log(userDetails.name)
     }
@@ -108,9 +108,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// componentdidmount to check local storage
-//  take data and setstate in the component
-// JSON.stringify to local storage
-//.parse to use the data
-

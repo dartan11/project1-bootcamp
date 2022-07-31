@@ -1,9 +1,22 @@
+/* imported fonts */
+
+@font-face {
+  font-family: chalkboard;
+  src: url("./Fonts/chalkboard4b-font.ttf");
+}
+
+/* center align everything */
+
 .App {
   text-align: center;
 }
 
+/* main background container */
+
 .App-header {
-  background-color: #05011b;
+  /* background: white; */
+  background-image: url("./images/mainbackground2.png");
+  background-size: 100% 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,6 +26,8 @@
   color: white;
 }
 
+/* input name page */
+
 .inputNameContainer{
   display:flex;
   flex-flow: column ;
@@ -21,16 +36,22 @@
 }
 
 .inputNameHeaderText{
-  color:rgb(255, 255, 255);
-  font-size: 45px;
-  margin: 15px;
+    display: flex;
+align-items: center;
+  justify-content: center;
+  margin: 20px 0px 20px 0px
+}
+
+#inputNameHeaderImage{
+  width: 70%;
+  height: auto;
 }
 
 .inputName {
   display: flex;
   flex-flow: column wrap;
-  height: 80vh;
-  width: 70vw;
+  height: 50vh;
+  width: 80%;
   margin: 20px;
   justify-content: center;
   align-items: center;
@@ -38,12 +59,173 @@
   background-size: 100% 100%;
 }
 
-.inputNameText{
-  color:white;
-  font-size: 10% 10%;
-  padding: 2%
+#inputNameMainText{
+  font-size: 90%;
 }
 
-.mb-2{
-  width:30vw;
+#inputNameField{
+  color:white;
+  font-size: 70%;
+  padding: 1%;
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  text-align: center;
+  width:50%
+}
+
+/* select category page */
+
+.selectCategory {
+  width: 60vw;
+  height:auto;
+}
+
+#selectCategoryHeaderText {
+  margin:30px 0px 0px 0px;
+    color:rgb(150, 32, 32);
+    font-weight: 500;
+}
+
+#selectCategoryHeaderText p {
+    font-weight: 200;
+}
+
+.centercol{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 25vh;
+  flex-flow: column
+}
+
+#addition{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/addition2.jpg");
+  background-size: 100% 100%;
+  height:100%;
+  width:60%;
+  margin: 10px;
+  border: 2px solid black
+}
+
+#subtraction{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/subtraction.jpg");
+  background-size: 100% 100%;
+  height:100%;
+  width:60%;
+    margin: 10px;
+    border: 2px solid black
+}
+
+#multiplication{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/multiplication.jpg");
+  background-size: 100% 100%;
+  height:100%;
+  width:60%;
+    margin: 10px;
+    border: 2px solid black
+}
+
+#placeholder{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/placeholder.jpg");
+  background-size: 100% 100%;
+  height:100%;
+  width:60%;
+    margin: 10px;
+    border: 2px solid black
+}
+
+.categoryselectbutton {
+  margin:20px;
+}
+
+#pointsinfo{
+      color:rgb(150, 32, 32);
+    font-weight: 500;
+}
+
+/* inside category pages */
+
+.fontchange{
+  font-family: chalkboard;  
+}
+
+li{
+  font-family: chalkboard;
+  margin: 0px 0px 5%
+}
+
+.Category-header{
+  background-image: url("./images/chalkboardbackground.jpg");
+  background-size: 100% 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 50px
+}
+
+
+.categoryinput{
+  
+  color:white;
+  font-size: 15px;
+  padding: 2%;
+  border: none;
+  border-bottom: 2px dotted white;
+  background: transparent;
+  text-align: center;
+  width: 30%;
+  margin: 0% 0% 0% 10%;
+}
+
+/* 
+redemption page */
+
+.redemption {
+      color:rgb(150, 32, 32);
+    font-weight: 500;
+}
+
+.card {
+  background-color: rgb(197, 228, 206) !important;
+  margin: 5px;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid purple
+}
+
+.card-title {
+  color: rgb(168, 30, 76);
+    font-size: 70% !important;
+}
+
+.card-text {
+  font-size: 60%;
+  color:black
+}
+
+.centered {
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }

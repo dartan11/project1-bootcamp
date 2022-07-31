@@ -1,5 +1,6 @@
 import React from "react";
-import Form from 'react-bootstrap/Form';
+import "../App.css";
+import inputnameheader from '../images/inputnamepageheader.png'
 
 export default class InputName extends React.Component {
 
@@ -8,21 +9,16 @@ export default class InputName extends React.Component {
     return (
       <div className="inputNameContainer">
         <div className="inputNameHeaderText">
-          Exercise Your Brain!
+          <img src={inputnameheader} alt="Mind Games, exercise your brain!" id="inputNameHeaderImage" />
         </div>
         <div className="inputName">
-          <Form>
-            <Form.Group className="mb-2">
-              <Form.Label>Please input your name:</Form.Label>
-              <br /><br />
-              <Form.Control placeholder="Input name and press <Enter>" onChange={event => this.props.onType(event)} onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  this.props.onUpdate(event)
-                }
-              }
-              } />
-            </Form.Group>
-          </Form>
+          <p id="inputNameMainText">Please input your name:</p>
+          <input placeholder="Input name and press <enter>" autoComplete="off" type="text" id="inputNameField" onChange={event => this.props.onType(event)} onKeyPress={event => {
+            if (event.key === 'Enter') {
+              this.props.onUpdate(event)
+            }
+          }
+          } />
         </div>
       </div>
     )

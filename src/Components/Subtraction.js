@@ -2,7 +2,7 @@ import React from "react";
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
+import "../App.css";
 
 
 
@@ -26,9 +26,9 @@ export default class Subtraction extends React.Component {
       points: 0,
       userAnswersArr: [],
       disableButtons: false,
-      charmander: 0,
-      bulbasaur: 0,
-      squirtle: 0,
+      item1: 0,
+      item2: 0,
+      item3: 0,
     }
   }
 
@@ -37,11 +37,11 @@ export default class Subtraction extends React.Component {
     let answers = []
 
     for (let i = 0; i < 10; i++) {
-      let number1 = Math.ceil(Math.random() * 50) + 10
-      let number2 = Math.ceil(Math.random() * 50) + 10
+      let number1 = Math.ceil(Math.random() * 20)
+      let number2 = Math.ceil(Math.random() * 20) + 1
       while (number1 <= number2) {
-        number1 = Math.ceil(Math.random() * 50) + 10
-        number2 = Math.ceil(Math.random() * 50) + 10
+        number1 = Math.ceil(Math.random() * 20)
+        number2 = Math.ceil(Math.random() * 20) + 1
       }
       let question = `${number1} - ${number2} =`
       let answer = number1 - number2
@@ -58,9 +58,9 @@ export default class Subtraction extends React.Component {
     this.questionGenerator()
     let userDetails = (JSON.parse(localStorage.getItem("user")))
     this.setState({
-      charmander: userDetails.charmander,
-      bulbasaur: userDetails.bulbasaur,
-      squirtle: userDetails.squirtle,
+      item1: userDetails.item1,
+      item2: userDetails.item2,
+      item3: userDetails.item3,
     })
   }
 
@@ -76,9 +76,9 @@ export default class Subtraction extends React.Component {
         console.log(userDetails)
         let userName = userDetails.name
         console.log(userDetails.name)
-        let newUserPoints = userDetails.points + 10
+        let newUserPoints = userDetails.points + 15
         console.log(userDetails.points)
-        localStorage.setItem("user", JSON.stringify({ name: userName, points: newUserPoints, charmander: this.state.charmander, bulbasaur: this.state.bulbasaur, squirtle: this.state.squirtle }))
+        localStorage.setItem("user", JSON.stringify({ name: userName, points: newUserPoints, item1: this.state.item1, item2: this.state.item2, item3: this.state.item3 }))
         console.log(userDetails.name)
         console.log(userDetails.points)
       }
@@ -116,23 +116,24 @@ export default class Subtraction extends React.Component {
 
     return (
       <div className="App">
-        <Container>
+        <div className="Category-header">
           <Row>
-            <Col>Subtraction</Col>
+            <Col className="fontchange">Subtraction</Col>
           </Row>
           <br />
           <Row>
-            <Col>Instructions:</Col>
+            <Col className="fontchange">Instructions:</Col>
           </Row>
           <Row>
-            <Col>Answer all questions and click submit, you will earn 10 points for every correct answer!</Col>
+            <Col className="fontchange">Answer all questions and click submit, <br />you will earn 15 points for every correct answer!</Col>
           </Row>
+          <br />
           <Row>
             <Col>
               <ol>
                 {this.state.questions.map((value, index) => {
                   if (index < 5) {
-                    return <li key={index}>{value} <input type="text" value={this.state[`question${index}`]} onInput={(event) => this.logUserAnswer(event, index)} disabled={this.state.disableButtons === true} /></li>
+                    return <li key={index}>{value} <input type="text" className="categoryinput" value={this.state[`question${index}`]} onInput={(event) => this.logUserAnswer(event, index)} disabled={this.state.disableButtons === true} /></li>
                   } else return null
                 })}
               </ol>
@@ -141,22 +142,26 @@ export default class Subtraction extends React.Component {
               <ol start="6">
                 {this.state.questions.map((value, index) => {
                   if (index >= 5) {
-                    return <li key={index}>{value} <input type="text" value={this.state[`question${index}`]} onInput={(event) => this.logUserAnswer(event, index)} disabled={this.state.disableButtons === true} /></li>
+                    return <li key={index}>{value} <input type="text" className="categoryinput" value={this.state[`question${index}`]} onInput={(event) => this.logUserAnswer(event, index)} disabled={this.state.disableButtons === true} /></li>
                   } else return null
                 })}
               </ol>
 
             </Col>
           </Row>
-          <Button onMouseEnter={this.checkAnswers} onClick={this.submitAnswers}>Submit</Button>
+          <br />
+          <Button variant="light" size="lg" onMouseEnter={this.checkAnswers} onClick={this.submitAnswers}>Submit</Button>
+          <br />
           <Row>
-            {this.state.disableButtons === true ? <div>You answered {this.state.numberOfCorrect} out of 10 questions correctly, you've earned {this.state.numberOfCorrect * 10} points! <br /> Go back to select a new category to earn more points!</div> : null}
-          </Row>
-          <Row>
-            <Col><Button onClick={this.props.backToCategoryTrigger}>Select New Category</Button></Col>
+            {this.state.disableButtons === true ? <div>You answered {this.state.numberOfCorrect} out of 10 questions correctly, you've earned {this.state.numberOfCorrect * 15} points! <br /> Click on the button below to select a new category!<br /><br /></div> : null}
           </Row>
 
-        </Container>
+          <Row>
+            <Col><Button variant="outline-light" size="sm" onClick={this.props.backToCategoryTrigger}>Select New Category</Button></Col>
+          </Row>
+          <br />
+
+        </div>
       </div>
     )
   }

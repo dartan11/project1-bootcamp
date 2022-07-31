@@ -2,6 +2,11 @@ import React from "react";
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
+import "../App.css";
+import uss from '../images/uss.jpg'
+import ps4 from '../images/PS4.jpg'
+import haagendazs from '../images/haagendazs.jpeg'
+import Card from 'react-bootstrap/Card';
 // import Container from 'react-bootstrap/Container'
 // import Card from 'react-bootstrap/Card'
 
@@ -13,26 +18,27 @@ export default class RedemptionCounter extends React.Component {
     super(props);
     this.state = {
       userPoints: 0,
-      charmander: 0,
-      bulbasaur: 0,
-      squirtle: 0
+      item1: 0,
+      item2: 0,
+      item3: 0
     }
   }
+
   componentDidMount() {
     let userDetails = (JSON.parse(localStorage.getItem("user")))
     this.setState({
       userName: userDetails.name,
       userPoints: userDetails.points,
-      charmander: userDetails.charmander,
-      bulbasaur: userDetails.bulbasaur,
-      squirtle: userDetails.squirtle,
+      item1: userDetails.item1,
+      item2: userDetails.item2,
+      item3: userDetails.item3,
     })
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.userPoints !== prevState.userPoints) {
       console.log(this.state.userPoints)
-      localStorage.setItem("user", JSON.stringify({ name: this.state.userName, points: this.state.userPoints, charmander: this.state.charmander, bulbasaur: this.state.bulbasaur, squirtle: this.state.squirtle }))
+      localStorage.setItem("user", JSON.stringify({ name: this.state.userName, points: this.state.userPoints, item1: this.state.item1, item2: this.state.item2, item3: this.state.item3 }))
     }
   }
 
@@ -43,7 +49,7 @@ export default class RedemptionCounter extends React.Component {
       let newUserPoints = this.state.userPoints - Number(event.target.value)
       this.setState({
         userPoints: newUserPoints,
-        charmander: this.state.charmander + 1
+        item1: this.state.item1 + 1
       })
     }
   }
@@ -55,7 +61,7 @@ export default class RedemptionCounter extends React.Component {
       let newUserPoints = this.state.userPoints - Number(event.target.value)
       this.setState({
         userPoints: newUserPoints,
-        bulbasaur: this.state.bulbasaur + 1
+        item2: this.state.item2 + 1
       })
     }
   }
@@ -67,56 +73,78 @@ export default class RedemptionCounter extends React.Component {
       let newUserPoints = this.state.userPoints - Number(event.target.value)
       this.setState({
         userPoints: newUserPoints,
-        squirtle: this.state.squirtle + 1
+        item3: this.state.item3 + 1
       })
     }
   }
 
   render() {
 
-
-
-    // const redeemItem = (event) => {
-    //   if (this.state.userPoints < event.target.value) {
-    //     alert("You do not have enough points for this redemption")
-    //   } else {
-    //     this.setState({
-    //       userPoints: userDetails.points - Number(event.target.value)
-    //     })
-    //     let newUserDetails = { name: this.state.userName, points: this.state.userPoints }
-    //     localStorage.setItem("user", JSON.stringify({ name: newUserDetails.name, points: newUserDetails.points }))
-    //     console.log("userpoints in redemption counter: ", newUserDetails.points)
-    //   }
-    // }
-
     return (
       <div className="App">
-
-        <Row>
-          <Col>
-            Welcome to the Redemption Counter!
-          </Col>
-        </Row>
-        <br />        <br />
-        <Row>
-          <Col>
-            {this.state.userName}, you currently have {this.state.userPoints} points!
-          </Col>
-        </Row>
-        <br />        <br />
-        <Row>
-          <Col>Charmander <br /> 10 points<br /><Button value="10" onClick={(event) => this.redeemItem1(event)}>Redeem</Button></Col>
-          <Col>Bulbasaur <br />100 points<br /><Button value="20" onClick={(event) => this.redeemItem2(event)}>Redeem</Button></Col>
-          <Col>Squirtle<br />900 points<br /><Button value="30" onClick={(event) => this.redeemItem3(event)}>Redeem</Button></Col>
-        </Row>
         <br />
         <br />
-        <Row>
-          <Col><Button onClick={this.props.backToCategoryTrigger}>Select Category</Button></Col>
-          <Col><Button value="see inventory" onClick={(event) => this.props.updateCategoryStateTrigger(event)}>See your inventory!</Button></Col>
+        <div className="redemption">
+          <Row>
+            <Col>
+              Welcome to the Redemption Counter!
+            </Col>
+          </Row>
+          <br />
+          <Row>
+            <Col>
+              {this.state.userName}, you currently have {this.state.userPoints} points!
+            </Col>
+          </Row>
+          <br />        <br />
+          <Row>
+            <Col className="centered">
+              <Card style={{ width: '18rem' }}>
+                <Card.Img className="fleximage" variant="top" src={haagendazs} />
+                <Card.Body>
+                  <Card.Title>1 Tub of Haagen Dazs Ice Cream</Card.Title>
+                  <Card.Text>
+                    10 points
+                  </Card.Text>
+                  <Button size="sm" variant="outline-dark" value="10" onClick={(event) => this.redeemItem1(event)}>Redeem</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col className="centered">
 
-        </Row>
-
+              <Card className="card" style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={ps4} />
+                <Card.Body>
+                  <Card.Title>15 Minutes of PS4 Play Time</Card.Title>
+                  <Card.Text>
+                    20 points
+                  </Card.Text>
+                  <Button size="sm" variant="outline-dark" value="20" onClick={(event) => this.redeemItem2(event)}>Redeem</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col className="centered">
+              <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={uss} />
+                <Card.Body>
+                  <Card.Title>1 Day of Fun at USS</Card.Title>
+                  <Card.Text>
+                    30 points
+                  </Card.Text>
+                  <Button size="sm" variant="outline-dark" value="30" onClick={(event) => this.redeemItem3(event)}>Redeem</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <br />
+          <br />
+          <Row>
+            <Col><Button size="sm" variant="dark" onClick={this.props.backToCategoryTrigger}>Select Category</Button></Col>
+            <Col><Button size="sm" variant="dark" value="see inventory" onClick={(event) => this.props.updateCategoryStateTrigger(event)}>See your inventory!</Button></Col>
+          </Row>
+          <br />
+          <br />
+        </div>
       </div>
     )
   }
