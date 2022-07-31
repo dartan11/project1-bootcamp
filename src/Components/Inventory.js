@@ -84,6 +84,12 @@ export default class Inventory extends React.Component {
       <div className="App">
         <div className="redemption">
           <Row>
+            <Col>
+              Check out what you have in your inventory!
+            </Col>
+          </Row>
+          <br /><br />
+          <Row>
             <Col className="centered">
               <Card style={{ width: '18rem' }}>
                 <Card.Img className="fleximage" variant="top" src={haagendazs} />
