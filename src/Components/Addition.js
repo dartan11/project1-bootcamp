@@ -119,7 +119,7 @@ export default class Addition extends React.Component {
           </Row>
           <br />
           <Row>
-            <Col className="fontchange">Instructions: test</Col>
+            <Col className="fontchange">Instructions:</Col>
           </Row>
           <Row>
             <Col className="fontchange">Answer all questions and click submit, <br />you will earn 10 points for every correct answer!</Col>
