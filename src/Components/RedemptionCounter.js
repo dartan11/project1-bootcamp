@@ -129,9 +129,9 @@ export default class RedemptionCounter extends React.Component {
                 <Card.Body>
                   <Card.Title>1 Day of Fun at USS</Card.Title>
                   <Card.Text>
-                    30 points
+                    30000 points
                   </Card.Text>
-                  <Button size="sm" variant="outline-dark" value="30" onClick={(event) => this.redeemItem3(event)}>Redeem</Button>
+                  <Button size="sm" variant="outline-dark" value="30000" onClick={(event) => this.redeemItem3(event)}>Redeem</Button>
                 </Card.Body>
               </Card>
             </Col>
